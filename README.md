@@ -243,17 +243,106 @@ This method reduces the number of event listeners and makes your code simpler.
 ---
 
 ### 31. What is the difference between innerHTML and textContent?
+innerHTML returns or sets the HTML content of an element, which can include HTML tags. It processes and renders HTML.
+Example:
+```js
+element.innerHTML = '<strong>Hello</strong>'; // Renders bold "Hello"
+```
+textContent returns or sets the text inside an element, ignoring any HTML tags. It treats content as plain text.
+Example:
+```js
+element.textContent = '<strong>Hello</strong>'; // Displays "<strong>Hello</strong>"
+```
 
 ### 32. How do you prevent the default behavior of an event?
+To prevent the default behavior (like submitting a form or following a link), you use event.preventDefault() inside the event handler.
+
+Example:
+```js
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Stops the form from submitting
+});
+```
+
 ### 33. How do you stop event propagation?
+To stop an event from bubbling up to parent elements, you use event.stopPropagation() inside the event handler.
+
+Example:
+```js
+document.querySelector('button').addEventListener('click', function(event) {
+  event.stopPropagation(); // Stops the click event from reaching parent elements
+});
+```
+
 ### 34. What is local storage in JavaScript?
+Local storage is a way to store data in the user's browser. It saves data as key-value pairs, and the data persists even after the browser is closed. It has no expiration time.
+
 ### 35. What is session storage?
+Session storage is similar to local storage, but the data is only saved for the duration of the page session. When the browser or tab is closed, the data is cleared.
+
 ### 36. How do you set, get, and remove items in local storage?
+You use the following methods to work with local storage:
+
+setItem(): To store data.
+getItem(): To retrieve data.
+removeItem(): To delete data.
+Example:
+```js
+// Set an item
+localStorage.setItem('username', 'John');
+
+// Get an item
+const user = localStorage.getItem('username');
+
+// Remove an item
+localStorage.removeItem('username');
+```
+
 ### 37. What are cookies in JavaScript?
+Cookies are small pieces of data that websites store on a user's browser. They can be used to remember information like login sessions. Cookies have expiration dates and can be set to expire after a certain time.
+
 ### 38. How do you create and read cookies?
+To create a cookie, you set the document.cookie property. To read cookies, you can access document.cookie, which returns all cookies in one string.
+
+Example:
+```js
+// Create a cookie
+document.cookie = "username=John; expires=Fri, 31 Dec 2024 12:00:00 UTC";
+
+// Read cookies
+const cookies = document.cookie;
+```
+
 ### 39. What are JavaScript objects?
+A JavaScript object is a collection of key-value pairs. Each key is a property, and the value can be any type of data. Objects let you group related data and functions.
+
+Example:
+```js
+const person = {
+  name: 'John',
+  age: 30,
+  greet: function() {
+    console.log('Hello');
+  }
+};
+```
+
 ### 40. What is object destructuring in JavaScript?
+Object destructuring allows you to extract values from an object and assign them to variables in a simpler way.
+
+Example:
+```js
+const person = { name: 'John', age: 30 };
+const { name, age } = person;
+console.log(name); // 'John'
+console.log(age); // 30
+```
+This is a shorthand way to pull out object properties and assign them to variables.
+
+---
+
 ### 41. What is array destructuring in JavaScript?
+
 ### 42. What is the spread operator in JavaScript?
 ### 43. What is the rest parameter in JavaScript?
 ### 44. How do you clone an object in JavaScript?
