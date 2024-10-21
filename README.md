@@ -768,16 +768,169 @@ fetch('url')
 ---
 
 ### 71. What is the use of Promise.all() in JavaScript?
+Promise.all() is a method that takes an array of promises and returns a single promise that resolves when all the promises in the array have resolved or when one of them rejects. This is useful when you want to wait for multiple asynchronous operations to complete before proceeding.
+
+Example:
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve) => setTimeout(resolve, 100, 'foo'));
+const promise3 = 42;
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values); // [3, 'foo', 42]
+});
+```
 
 ### 72. What is the Promise.race() method?
+Promise.race() is a method that takes an array of promises and returns a promise that resolves or rejects as soon as one of the promises in the array resolves or rejects. It’s useful when you want to take action based on the first promise to settle.
+
+Example:
+```js
+const promise1 = new Promise((resolve) => setTimeout(resolve, 100, 'one'));
+const promise2 = new Promise((resolve) => setTimeout(resolve, 50, 'two'));
+
+Promise.race([promise1, promise2]).then((value) => {
+  console.log(value); // 'two'
+});
+```
+
 ### 73. What is the difference between setTimeout and setInterval?
+setTimeout is a method that allows you to run a function once after a specified delay. It takes two arguments: the function to execute and the time in milliseconds to wait before running it.
+```js
+setTimeout(() => {
+  console.log('This runs after 2 seconds');
+}, 2000);
+```
+setInterval is a method that allows you to run a function repeatedly at specified intervals. It also takes two arguments: the function to execute and the time in milliseconds between each execution.
+```js
+setInterval(() => {
+  console.log('This runs every 2 seconds');
+}, 2000);
+```
+
 ### 74. How do you clear a timeout or an interval in JavaScript?
+You can clear a timeout or an interval using the clearTimeout() and clearInterval() methods, respectively. You need to save the reference returned by setTimeout() or setInterval().
+
+Example:
+```js
+const timeoutId = setTimeout(() => {
+  console.log('This will not run');
+}, 2000);
+clearTimeout(timeoutId); // Cancels the timeout
+
+const intervalId = setInterval(() => {
+  console.log('This will not run either');
+}, 2000);
+clearInterval(intervalId); // Cancels the interval
+```
+
 ### 75. What are function constructors?
+Function constructors are functions used to create objects. You can define a function that acts like a blueprint for creating multiple objects with the same properties and methods. You use the new keyword to create an instance of the object.
+
+Example:
+```js
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const person1 = new Person('Alice', 25);
+const person2 = new Person('Bob', 30);
+console.log(person1.name); // 'Alice'
+console.log(person2.age); // 30
+```
+
 ### 76. What are template literals and how do you use them?
+Template literals are a way to create strings in JavaScript that can contain placeholders. They are enclosed by backticks (`) instead of quotes. You can use ${} to insert variables or expressions into the string.
+
+Example:
+```js
+const name = 'Alice';
+const age = 25;
+const message = `My name is ${name} and I am ${age} years old.`;
+console.log(message); // 'My name is Alice and I am 25 years old.'
+```
+
 ### 77. How do you work with dates and times in JavaScript?
+You can work with dates and times using the built-in Date object in JavaScript. You can create a new date object, get the current date and time, and perform operations like getting the year, month, day, etc.
+
+Example:
+```js
+const now = new Date();
+console.log(now); // Current date and time
+console.log(now.getFullYear()); // Get the current year
+console.log(now.getMonth() + 1); // Get the current month (0-11, so add 1)
+console.log(now.getDate()); // Get the current day of the month
+```
+
 ### 78. What are JavaScript classes?
+JavaScript classes are a way to create objects using a more structured syntax. They allow you to define a blueprint for creating objects with properties and methods. Classes can also use inheritance.
+
+Example:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+const dog = new Animal('Dog');
+dog.speak(); // 'Dog makes a noise.'
+```
+
 ### 79. What is the extends keyword in JavaScript?
+The extends keyword is used in class declarations to create a subclass. A subclass inherits properties and methods from a parent class (or superclass). This allows for code reuse and the creation of more specific classes.
+
+Example:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const dog = new Dog('Buddy');
+dog.bark(); // 'Buddy barks.'
+```
+
 ### 80. What is inheritance in JavaScript?
+Inheritance is a feature in JavaScript that allows one class (the child or subclass) to inherit properties and methods from another class (the parent or superclass). This promotes code reuse and makes it easier to create related classes.
+
+Example:
+```js
+class Vehicle {
+  constructor(brand) {
+    this.brand = brand;
+  }
+
+  honk() {
+    console.log('Beep!');
+  }
+}
+
+class Car extends Vehicle {
+  drive() {
+    console.log(`${this.brand} is driving.`);
+  }
+}
+
+const car = new Car('Toyota');
+car.honk(); // 'Beep!'
+car.drive(); // 'Toyota is driving.'
+```
+
+---
+
 ### 81. How do you create private variables in JavaScript?
 ### 82. What is the Object.assign() method?
 ### 83. What is the difference between deep copy and shallow copy?
