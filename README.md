@@ -342,17 +342,158 @@ This is a shorthand way to pull out object properties and assign them to variabl
 ---
 
 ### 41. What is array destructuring in JavaScript?
+Array destructuring allows you to unpack values from an array into individual variables in a clean and simple way.
+
+Example:
+```js
+const fruits = ['apple', 'banana', 'cherry'];
+const [first, second] = fruits;
+console.log(first);  // 'apple'
+console.log(second); // 'banana'
+```
+This assigns apple to first and banana to second.
 
 ### 42. What is the spread operator in JavaScript?
+The spread operator (...) allows you to expand or spread elements from arrays or objects into individual elements or properties.
+
+Example (with arrays):
+```js
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];
+console.log(arr2); // [1, 2, 3, 4]
+```
+Example (with objects):
+```js
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 };
+console.log(obj2); // { a: 1, b: 2, c: 3 }
+```
+
 ### 43. What is the rest parameter in JavaScript?
+The rest parameter (...) allows you to group the remaining function arguments into an array.
+
+Example:
+```js
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num);
+}
+console.log(sum(1, 2, 3)); // 6
+```
+Here, numbers becomes an array of all arguments passed to the function.
+
 ### 44. How do you clone an object in JavaScript?
+To clone an object, you can use the spread operator (...) or Object.assign().
+
+Example (spread operator):
+```js
+const original = { a: 1, b: 2 };
+const clone = { ...original };
+console.log(clone); // { a: 1, b: 2 }
+```
+Example (Object.assign()):
+```js
+const original = { a: 1, b: 2 };
+const clone = Object.assign({}, original);
+console.log(clone); // { a: 1, b: 2 }
+```
+
 ### 45. How do you merge two objects in JavaScript?
+To merge two objects, you can use the spread operator or Object.assign().
+
+Example (spread operator):
+```js
+const obj1 = { a: 1 };
+const obj2 = { b: 2 };
+const merged = { ...obj1, ...obj2 };
+console.log(merged); // { a: 1, b: 2 }
+```
+Example (Object.assign()):
+```js
+const obj1 = { a: 1 };
+const obj2 = { b: 2 };
+const merged = Object.assign({}, obj1, obj2);
+console.log(merged); // { a: 1, b: 2 }
+```
+
 ### 46. What are array methods like map(), filter(), and reduce()?
+map() creates a new array by applying a function to each element.
+```js
+const nums = [1, 2, 3];
+const doubled = nums.map(num => num * 2);
+console.log(doubled); // [2, 4, 6]
+```
+filter() creates a new array with elements that pass a test.
+```js
+const nums = [1, 2, 3, 4];
+const evens = nums.filter(num => num % 2 === 0);
+console.log(evens); // [2, 4]
+```
+reduce() applies a function to each element to reduce the array to a single value.
+```js
+const nums = [1, 2, 3, 4];
+const sum = nums.reduce((total, num) => total + num, 0);
+console.log(sum); // 10
+```
+
 ### 47. What is the difference between slice() and splice()?
+slice() returns a new array containing selected elements from the original array. It doesn’t change the original array.
+```js
+const arr = [1, 2, 3, 4];
+const sliced = arr.slice(1, 3);
+console.log(sliced); // [2, 3]
+```
+splice() changes the original array by adding/removing elements.
+```js
+const arr = [1, 2, 3, 4];
+arr.splice(1, 2); // removes 2 elements starting from index 1
+console.log(arr); // [1, 4]
+```
+
 ### 48. How do you check if a value is an array in JavaScript?
+You can use Array.isArray() to check if a value is an array.
+
+Example:
+```js
+const arr = [1, 2, 3];
+console.log(Array.isArray(arr)); // true
+```
+
 ### 49. What is the difference between for...of and for...in loops?
+for...of iterates over the values of an iterable object (like an array).
+```js
+const arr = [1, 2, 3];
+for (let value of arr) {
+  console.log(value);
+}
+// Output: 1, 2, 3
+```
+for...in iterates over the keys (or indexes) of an object or array.
+```js
+const arr = [1, 2, 3];
+for (let key in arr) {
+  console.log(key);
+}
+// Output: 0, 1, 2 (indexes)
+```
+
 ### 50. What is the difference between push() and unshift() methods in arrays?
+push() adds an element to the end of the array.
+```js
+const arr = [1, 2];
+arr.push(3);
+console.log(arr); // [1, 2, 3]
+```
+unshift() adds an element to the beginning of the array.
+```js
+const arr = [1, 2];
+arr.unshift(0);
+console.log(arr); // [0, 1, 2]
+```
+
+---
+
 ### 51. What is the pop() and shift() methods in arrays?
+
 ### 52. How do you check if an object has a specific property?
 ### 53. What is the typeof operator?
 ### 54. What is the instanceof operator?
