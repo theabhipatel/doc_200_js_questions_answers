@@ -1164,16 +1164,131 @@ To enable strict mode, add 'use strict'; at the beginning of a script or functio
 x = 10; // ReferenceError: x is not defined
 ```
 
+---
+
 ### 91. How do you enable strict mode in JavaScript?
+You can enable strict mode by adding 'use strict'; at the beginning of your JavaScript file or inside a function. This tells the JavaScript engine to enforce stricter parsing and error handling.
+
+Example:
+```js
+'use strict'; // Enable strict mode
+
+function myFunction() {
+  // This function runs in strict mode
+}
+```
+
 ### 92. What are JavaScript symbols?
+Symbols are a special data type in JavaScript that are unique and immutable. They are often used as property keys to avoid name collisions. Each symbol is created using the Symbol() function, and no two symbols are the same, even if they have the same description.
+
+Example:
+```js
+const mySymbol = Symbol('description');
+const obj = {
+  [mySymbol]: 'value'
+};
+console.log(obj[mySymbol]); // 'value'
+```
+
 ### 93. What are regular expressions in JavaScript?
+Regular expressions (regex) are patterns used to match character combinations in strings. They are useful for searching, replacing, or validating strings. In JavaScript, regular expressions are created using the RegExp object or by using a regex literal.
+
+Example of a regex literal:
+```js
+const regex = /abc/; // Matches the string 'abc'
+```
+
 ### 94. How do you create and use a regular expression?
+You can create a regular expression using either a regex literal or the RegExp constructor. You can then use methods like .test(), .exec(), or string methods like .match() to work with it.
+
+Example:
+```js
+const regex = /hello/; // Regex literal
+
+console.log(regex.test('hello world')); // true
+console.log('hello world'.match(regex)); // ['hello']
+```
+Using the RegExp constructor:
+```js
+const regex = new RegExp('hello');
+console.log(regex.test('hello world')); // true
+```
+
 ### 95. What is the difference between deep equality and strict equality?
+Strict equality (===) checks if two values are the same in value and type. It does not perform type conversion. Example:
+
+```js
+console.log(1 === '1'); // false (different types)
+```
+Deep equality checks if two objects are equal by comparing their properties and values recursively. Libraries like Lodash provide deep equality checks. Example:
+```js
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+console.log(JSON.stringify(obj1) === JSON.stringify(obj2)); // true (deep equality)
+```
+
 ### 96. How do you create an asynchronous function in JavaScript?
+You can create an asynchronous function using the async keyword before a function declaration. Inside this function, you can use the await keyword to wait for promises to resolve.
+
+Example:
+```js
+async function fetchData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  return data;
+}
+
+fetchData().then(data => console.log(data));
+```
+
 ### 97. What is the difference between DOMContentLoaded and load events?
+DOMContentLoaded: This event fires when the initial HTML document has been completely loaded and parsed. It does not wait for stylesheets, images, and subframes to finish loading.
+Example:
+```js
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded and parsed');
+});
+```
+load: This event fires when the whole page, including all dependent resources like images and stylesheets, has finished loading.
+Example:
+```js
+window.addEventListener('load', function() {
+  console.log('All resources finished loading!');
+});
+```
+
 ### 98. What are WeakMap and WeakSet in JavaScript?
+WeakMap: A collection of key-value pairs where the keys are objects and the values can be any value. The keys are weakly held, meaning if there are no other references to the key object, it can be garbage collected.
+Example:
+```js
+const weakMap = new WeakMap();
+const obj = {};
+weakMap.set(obj, 'value');
+console.log(weakMap.get(obj)); // 'value'
+```
+WeakSet: A collection of objects where each object is weakly held. Like WeakMap, if there are no other references to the object, it can be garbage collected.
+Example:
+```js
+const weakSet = new WeakSet();
+const obj = {};
+weakSet.add(obj);
+console.log(weakSet.has(obj)); // true
+```
+
 ### 99. How do you check if an object is empty in JavaScript?
+To check if an object is empty (i.e., it has no own properties), you can use Object.keys() to get an array of the object's keys and check if the length is zero.
+
+Example:
+```js
+const obj = {};
+console.log(Object.keys(obj).length === 0); // true (empty object)
+
+const obj2 = { a: 1 };
+console.log(Object.keys(obj2).length === 0); // false (not empty)
+```
+
 ### 100. What is garbage collection in JavaScript?
+Garbage collection is the automatic process of identifying and freeing up memory that is no longer being used by the program. This helps to prevent memory leaks and optimize memory usage. JavaScript uses algorithms like mark-and-sweep to manage memory automatically.
 
 ---
 
