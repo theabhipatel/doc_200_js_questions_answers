@@ -493,16 +493,129 @@ console.log(arr); // [0, 1, 2]
 ---
 
 ### 51. What is the pop() and shift() methods in arrays?
+pop() removes the last element from an array and returns that element. It changes the length of the array.
+```js
+const arr = [1, 2, 3];
+const last = arr.pop();
+console.log(last); // 3
+console.log(arr);  // [1, 2]
+```
+shift() removes the first element from an array and returns that element. It also changes the length of the array.
+```js
+const arr = [1, 2, 3];
+const first = arr.shift();
+console.log(first); // 1
+console.log(arr);   // [2, 3]
+```
 
 ### 52. How do you check if an object has a specific property?
+You can use the in operator or the hasOwnProperty() method to check if an object has a specific property.
+
+Using the in operator:
+```js
+const obj = { name: 'Alice', age: 25 };
+console.log('name' in obj); // true
+```
+Using hasOwnProperty():
+```js
+const obj = { name: 'Alice', age: 25 };
+console.log(obj.hasOwnProperty('age')); // true
+```
+
 ### 53. What is the typeof operator?
+The typeof operator is used to determine the type of a variable or value. It returns a string that indicates the type.
+
+Example:
+```js
+console.log(typeof 42);            // 'number'
+console.log(typeof 'hello');       // 'string'
+console.log(typeof true);          // 'boolean'
+console.log(typeof {});            // 'object'
+console.log(typeof undefined);     // 'undefined'
+```
+
 ### 54. What is the instanceof operator?
+The instanceof operator checks if an object is an instance of a specific constructor or class. It returns true or false.
+
+Example:
+```js
+const arr = [1, 2, 3];
+console.log(arr instanceof Array); // true
+console.log(arr instanceof Object); // true
+```
+
 ### 55. What is NaN in JavaScript?
+NaN stands for "Not-a-Number." It is a special value used to represent a value that is not a valid number. It usually results from invalid mathematical operations.
+
+Example:
+```js
+const result = 0 / 0; // results in NaN
+console.log(result);   // NaN
+```
+
 ### 56. How do you check if a value is NaN?
+To check if a value is NaN, you can use the isNaN() function or compare it to itself (because NaN is the only value that is not equal to itself).
+
+```js
+console.log(isNaN(NaN));       // true
+console.log(isNaN(42));        // false
+```
+
 ### 57. What is the use of the isNaN() function?
+The isNaN() function checks whether a value is NaN (Not-a-Number). It returns true if the value is NaN and false otherwise.
+
+Example:
+```js
+console.log(isNaN('hello')); // true, because it's not a number
+console.log(isNaN(123));     // false, because it is a number
+```
+
 ### 58. How do you convert a string to a number in JavaScript?
+You can convert a string to a number using several methods, such as Number(), parseInt(), or parseFloat().
+
+Using Number():
+```js
+const str = '42';
+const num = Number(str);
+console.log(num); // 42
+```
+Using parseInt():
+```js
+const str = '42';
+const num = parseInt(str);
+console.log(num); // 42
+```
+Using parseFloat():
+```js
+const str = '42.5';
+const num = parseFloat(str);
+console.log(num); // 42.5
+```
+
 ### 59. What is parseInt() and parseFloat()?
+parseInt() converts a string to an integer. It takes two arguments: the string to convert and an optional base (radix).
+```js
+const num = parseInt('42', 10); // 42
+```
+parseFloat() converts a string to a floating-point number.
+```js
+const num = parseFloat('42.5'); // 42.5
+```
+
 ### 60. What is the Number() function?
+The Number() function converts a value to a number. It can handle strings, booleans, and other types.
+
+Example:
+```js
+console.log(Number('42'));      // 42
+console.log(Number('42.5'));    // 42.5
+console.log(Number(true));       // 1
+console.log(Number(false));      // 0
+console.log(Number(undefined));  // NaN
+```
+
+---
+
 ### 61. What is JSON and how do you parse and stringify JSON in JavaScript?
 ### 62. What is a higher-order function in JavaScript?
 ### 63. What is the difference between Object.freeze() and Object.seal()?
