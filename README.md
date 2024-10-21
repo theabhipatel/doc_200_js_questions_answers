@@ -73,15 +73,57 @@ greet("John", function() {
 ```
 
 ### 11. What are promises in JavaScript?
+A promise in JavaScript is a special object that represents the eventual completion or failure of an asynchronous operation. It can be in one of three states: pending, fulfilled, or rejected. Promises are used to handle asynchronous code, like making API calls or loading data, by allowing you to run code after an operation completes, rather than blocking other code from running.
+
 ### 12. What is async/await in JavaScript?
+Async/await is a way to write asynchronous code in JavaScript more easily. It allows you to write code that looks like it runs in order, even though some tasks take time to complete. The async keyword is used before a function to make it asynchronous, and await is used inside that function to wait for a promise to complete before moving to the next line. This makes code easier to read and manage compared to promises alone.
+
 ### 13. What are JavaScript template literals?
+Template literals are a new way to work with strings in JavaScript, introduced in ES6. They allow you to embed variables and expressions inside a string without using concatenation (+). Template literals are written with backticks (`) instead of single or double quotes, and you can insert variables using ${}.
+
+Example:
+```js
+const name = "John";
+console.log(`Hello, ${name}!`);
+```
+
 ### 14. What is event bubbling and event capturing?
+Event bubbling and event capturing describe how events travel through the DOM. When an event happens on an element (like a button click), it first triggers event capturing, where the event travels from the top of the DOM tree to the target element. After that, event bubbling occurs, where the event moves back up the DOM tree from the target to the top. You can control whether you handle the event in the capture or bubble phase.
+
 ### 15. How do you handle errors in JavaScript?
+In JavaScript, you handle errors using try...catch blocks. You put the code that might throw an error inside the try block, and if an error happens, the catch block runs to deal with it. You can also use the finally block to run code that should always execute, whether an error occurred or not.
+
+Example:
+```js
+try {
+  // Code that might throw an error
+} catch (error) {
+  // Handle the error
+} finally {
+  // Code that always runs
+}
+```
+
 ### 16. What is the difference between synchronous and asynchronous code?
+Synchronous code runs in sequence, where each line of code waits for the previous one to finish before running. Asynchronous code allows some tasks to run in the background without waiting for others to finish. This is useful for tasks like fetching data from a server, so other code can keep running without delay.
+
 ### 17. What are JavaScript modules?
+JavaScript modules are a way to organize and reuse code by splitting it into separate files. Each file is a module, and you can export parts of a module (like functions or variables) to use in other files. This helps make code easier to manage and avoids having everything in one large file.
+Modules are typically imported using the import and export keywords.
+
 ### 18. What is the `this` keyword in JavaScript?
+The **this** keyword in JavaScript refers to the object that is currently executing the function. What this refers to depends on how and where the function is called. In general, this helps functions access properties and methods within their own object, but it can change based on the context in which it's used.
+
 ### 19. What is the difference between call(), apply(), and bind()?
+call(), apply(), and bind() are methods that allow you to set the value of this in a function.
+
+call(): Calls a function with a given this value and arguments passed individually.
+apply(): Calls a function with a given this value, but arguments are passed as an array.
+bind(): Returns a new function with a specific this value, but doesn’t execute the function immediately.
+
 ### 20. What is a prototype in JavaScript?
+In JavaScript, every object has a prototype. The prototype is like a blueprint or template for creating objects. It allows objects to share methods and properties, so you don't have to define them for each individual object. This is the basis of inheritance in JavaScript. When you try to access a property or method on an object, JavaScript looks for it in the object itself, and if it’s not found, it looks at the object’s prototype.
+
 ### 21. What is the difference between a function declaration and a function expression?
 ### 22. What are default parameters in JavaScript functions?
 ### 23. What is the difference between a for loop and a forEach loop?
