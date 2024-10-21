@@ -72,6 +72,8 @@ greet("John", function() {
 });
 ```
 
+---
+
 ### 11. What are promises in JavaScript?
 A promise in JavaScript is a special object that represents the eventual completion or failure of an asynchronous operation. It can be in one of three states: pending, fulfilled, or rejected. Promises are used to handle asynchronous code, like making API calls or loading data, by allowing you to run code after an operation completes, rather than blocking other code from running.
 
@@ -227,6 +229,9 @@ Example of removing:
 ```js
 document.getElementById('myButton').removeEventListener('click', myFunction);
 ```
+
+---
+
 ### 30. What is event delegation?
 Event delegation is a way to manage events more efficiently. Instead of adding event listeners to many elements, you add one listener to a parent element, and it will handle events that bubble up from child elements.
 
