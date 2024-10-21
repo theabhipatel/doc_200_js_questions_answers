@@ -4,6 +4,8 @@
 ---
 
 ### 1. What is JavaScript?
+JavaScript is a high-level, dynamic programming language used to create interactive effects in web browsers. It is a key technology of the web along with HTML and CSS. JavaScript can be used for both front-end (client-side) and back-end (server-side) development. It supports different programming styles, making it a useful tool for building web applications, mobile apps, and more. Additionally, JavaScript can change the Document Object Model (DOM) to update content and respond to user actions in real-time.
+
 ### 2. What are the different data types in JavaScript?
 ### 3. What is the difference between let, const, and var?
 ### 4. What is hoisting in JavaScript?
