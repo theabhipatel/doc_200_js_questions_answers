@@ -103,3 +103,106 @@
 ### 98. What are WeakMap and WeakSet in JavaScript?
 ### 99. How do you check if an object is empty in JavaScript?
 ### 100. What is garbage collection in JavaScript?
+
+---
+
+### 101. What is the purpose of the JavaScript debugger statement?
+### 102. What is the difference between window and document in JavaScript?
+### 103. What is an anonymous function in JavaScript?
+### 104. What are getter and setter methods in JavaScript?
+### 105. How do you create an object in JavaScript?
+### 106. What is the difference between const and Object.freeze()?
+### 107. What is the difference between a shallow copy and a deep copy in JavaScript?
+### 108. How do you compare objects in JavaScript?
+### 109. What is the arguments object in JavaScript?
+### 110. What is a pure function in JavaScript?
+### 111. What is memoization in JavaScript?
+### 112. How do you perform deep cloning of an object in JavaScript?
+### 113. What is the difference between synchronous and asynchronous iteration in JavaScript?
+### 114. What is a symbol in JavaScript, and why would you use it?
+### 115. What is the hasOwnProperty() method?
+### 116. How do you merge arrays in JavaScript?
+### 117. What is the purpose of the reduce() method in arrays?
+### 118. What is the difference between Array.from() and Array.of()?
+### 119. What is the difference between map() and forEach() in arrays?
+### 120. What is the use of the every() and some() methods in arrays?
+### 121. How do you convert a string to an array in JavaScript?
+### 122. How do you reverse a string in JavaScript?
+### 123. How do you remove duplicates from an array in JavaScript?
+### 124. How do you flatten an array in JavaScript?
+### 125. What is the difference between Array.prototype.sort() and Array.prototype.reverse()?
+### 126. What is the Math.random() method, and how do you generate a random number in JavaScript?
+### 127. How do you round a number to a specific number of decimal places in JavaScript?
+### 128. What is the Math.floor(), Math.ceil(), and Math.round() methods?
+### 129. How do you format a number as a currency string in JavaScript?
+### 130. How do you find the maximum or minimum value in an array of numbers in JavaScript?
+### 131. What are setTimeout() and setInterval() methods?
+### 132. How do you convert a date to a string in a specific format in JavaScript?
+### 133. How do you calculate the difference between two dates in JavaScript?
+### 134. What is a Date object in JavaScript, and how do you create it?
+### 135. How do you compare two dates in JavaScript?
+### 136. How do you convert a JavaScript date to UTC format?
+### 137. What is the difference between encodeURI() and encodeURIComponent()?
+### 138. How do you decode a URL in JavaScript?
+### 139. What is the use of the new keyword in JavaScript?
+### 140. How do you define a constructor function in JavaScript?
+### 141. How do you inherit properties from another object in JavaScript?
+### 142. What is the purpose of the prototype property in JavaScript?
+### 143. How do you create an instance of an object using a constructor function?
+### 144. What is prototypal inheritance in JavaScript?
+### 145. How do you use the Object.create() method for inheritance?
+### 146. What is the purpose of the super() keyword in JavaScript?
+### 147. How do you create a subclass in JavaScript using the extends keyword?
+### 148. What is the constructor property in JavaScript?
+### 149. How do you add methods to a JavaScript class?
+### 150. What is a static method in JavaScript?
+### 151. How do you check if an object is an instance of a class in JavaScript?
+### 152. What is the difference between a class and an object in JavaScript?
+### 153. How do you define a method in a JavaScript class?
+### 154. What is the use of the constructor method in a JavaScript class?
+### 155. How do you override a method in JavaScript?
+### 156. How do you implement method chaining in JavaScript?
+### 157. What is the difference between the function keyword and an arrow function in JavaScript?
+### 158. How do you handle exceptions in JavaScript using try...catch?
+### 159. How do you rethrow an error in JavaScript?
+### 160. What is the use of the finally block in exception handling?
+### 161. What are JavaScript built-in errors?
+### 162. What is a custom error in JavaScript?
+### 163. How do you define and throw a custom error in JavaScript?
+### 164. What is the purpose of the stack trace in error handling?
+### 165. How do you catch multiple types of errors in JavaScript?
+### 166. What is the purpose of the throw statement in JavaScript?
+### 167. How do you define a module in JavaScript?
+### 168. What is the export and import syntax in JavaScript modules?
+### 169. How do you export multiple values from a JavaScript module?
+### 170. How do you import only specific parts of a module in JavaScript?
+### 171. What is the default export in JavaScript?
+### 172. How do you rename imports or exports in JavaScript?
+### 173. What is the difference between named and default exports in JavaScript?
+### 174. How do you import a module dynamically in JavaScript?
+### 175. What is tree shaking in JavaScript?
+### 176. What are CommonJS modules in JavaScript?
+### 177. How do you convert a CommonJS module to an ES module?
+### 178. How do you handle circular dependencies in JavaScript modules?
+### 179. What is a module bundler in JavaScript?
+### 180. What is Webpack, and how does it work?
+### 181. How do you configure Webpack for a JavaScript project?
+### 182. What are entry and output properties in a Webpack configuration?
+### 183. How do you define loaders in a Webpack configuration?
+### 184. What is the purpose of plugins in Webpack?
+### 185. What is the difference between a loader and a plugin in Webpack?
+### 186. How do you configure Babel with Webpack?
+### 187. What is code splitting in Webpack?
+### 188. How do you optimize Webpack build performance?
+### 189. What is hot module replacement (HMR) in Webpack?
+### 190. How do you use Webpack with React?
+### 191. How do you configure Webpack for production and development environments?
+### 192. What are source maps in JavaScript, and how do they work?
+### 193. How do you enable source maps in Webpack?
+### 194. What is lazy loading in JavaScript?
+### 195. How do you implement lazy loading in a React application?
+### 196. What is code splitting in React?
+### 197. How do you use React.lazy() for dynamic imports?
+### 198. How do you handle errors in dynamically loaded components in React?
+### 199. What is the Suspense component in React?
+### 200. How do you use the Suspense component for code splitting in React?
