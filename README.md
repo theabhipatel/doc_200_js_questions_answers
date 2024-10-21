@@ -29,13 +29,49 @@ In JavaScript, there are mainly two type of data types:
 
 
 ### 3. What is the difference between let, const, and var?
+var: The old way to declare variables. Variables declared with var are function-scoped and can be re-declared.
+let: Introduced in newer versions, it is block-scoped and can be updated but not re-declared.
+const: Also block-scoped but cannot be updated or re-declared after being assigned a value.
+
 ### 4. What is hoisting in JavaScript?
+ Hoisting is a JavaScript behavior where variable and function declarations are moved to the top of their scope before the code executes. This means you can use a variable or function before you actually declare it in your code, but only with var (not let or const).
+ 
 ### 5. Explain the concept of closures.
+A closure in JavaScript is a feature where an inner function can access variables from its own scope, the outer function's scope, and the global scope. This means the inner function "remembers" the variables from the outer function, even after the outer function has finished running. Closures allow functions to keep using data from the surrounding scope where they were created.
+
 ### 6. What is the difference between == and ===?
+==: Checks if the values are the same, even if they are different types. For example, 5 == '5' is true because the values are the same.
+===: Checks if the values and types are the same. So, 5 === '5' is false because one is a number and the other is a string.
+
 ### 7. What is the difference between null and undefined?
+null: This means a variable is intentionally empty or has no value.
+undefined: This means a variable has been declared but not yet given a value.
+
 ### 8. What are JavaScript arrow functions?
+avaScript arrow functions are a shorter and more concise way to write functions, introduced in ES6. They don't have their own this context and instead inherit this from the surrounding code. Arrow functions are useful for simplifying function expressions, especially in callbacks or when using array methods. Their syntax is more compact compared to traditional functions.
+
 ### 9. How do you declare a function in JavaScript?
+A function can be declared like this: using function keyword
+```js
+function sayHello() {
+  console.log("Hello");
+}
+```
+This creates a function named sayHello that prints "Hello" when it's called.
+
 ### 10. What is a callback function?
+A callback function is a function that is passed into another function as an argument and is executed later. For example:
+
+```js
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+greet("John", function() {
+  console.log("Welcome!");
+});
+```
+
 ### 11. What are promises in JavaScript?
 ### 12. What is async/await in JavaScript?
 ### 13. What are JavaScript template literals?
