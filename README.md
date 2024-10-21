@@ -617,16 +617,158 @@ console.log(Number(undefined));  // NaN
 ---
 
 ### 61. What is JSON and how do you parse and stringify JSON in JavaScript?
+JSON (JavaScript Object Notation) is a lightweight format for storing and exchanging data. It is easy for humans to read and write, and easy for machines to parse and generate.
+
+Parsing JSON means converting a JSON string into a JavaScript object. You can do this using the JSON.parse() method:
+```js
+const jsonString = '{"name": "Alice", "age": 25}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject); // { name: 'Alice', age: 25 }
+```
+Stringifying JSON means converting a JavaScript object into a JSON string. You can do this using the JSON.stringify() method:
+```js
+const jsonObject = { name: 'Alice', age: 25 };
+const jsonString = JSON.stringify(jsonObject);
+console.log(jsonString); // '{"name":"Alice","age":25}'
+```
+
 ### 62. What is a higher-order function in JavaScript?
+A higher-order function is a function that can take another function as an argument or return a function as a result. This allows for more flexible and reusable code.
+
+Example:
+```js
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+function executeGreeting(greetingFunction, name) {
+  return greetingFunction(name);
+}
+
+console.log(executeGreeting(greet, 'Alice')); // 'Hello, Alice!'
+```
+
 ### 63. What is the difference between Object.freeze() and Object.seal()?
+Object.freeze() makes an object immutable, meaning you cannot change, add, or remove any properties from the object. Once frozen, the object cannot be modified.
+```js
+const obj = { name: 'Alice' };
+Object.freeze(obj);
+obj.name = 'Bob'; // This will not change the name
+console.log(obj.name); // 'Alice'
+```
+Object.seal() allows you to prevent adding or removing properties from an object, but you can still change the existing properties. The object is not fully immutable.
+```js
+const obj = { name: 'Alice' };
+Object.seal(obj);
+obj.age = 25; // This will not add a new property
+obj.name = 'Bob'; // This will change the existing property
+console.log(obj.name); // 'Bob'
+```
+
 ### 64. What is function currying in JavaScript?
+Function currying is a technique where a function takes multiple arguments one at a time, instead of all at once. Each call to the function returns another function that takes the next argument. This allows for partial application of a function.
+
+Example:
+```js
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
+
+const double = multiply(2);
+console.log(double(5)); // 10
+```
+
 ### 65. What is the difference between mutable and immutable objects?
+Mutable objects can be changed after they are created. You can add, remove, or modify properties without creating a new object. Examples include arrays and objects in JavaScript.
+```js
+const arr = [1, 2, 3];
+arr.push(4); // This changes the original array
+```
+Immutable objects cannot be changed after they are created. Any changes result in a new object. Strings and numbers in JavaScript are examples of immutable objects.
+```js
+const str = 'hello';
+const newStr = str.toUpperCase(); // This creates a new string
+console.log(str); // 'hello'
+console.log(newStr); // 'HELLO'
+```
+
 ### 66. What is the event loop in JavaScript?
+The event loop is a mechanism that allows JavaScript to handle asynchronous operations. It continuously checks the call stack and the message queue. If the call stack is empty, it takes the first event from the queue and executes its callback. This allows JavaScript to perform non-blocking operations.
+
+Example:
+
+A function is called.
+If it has asynchronous operations (like a timer or an API call), it goes to the message queue.
+When the call stack is empty, the event loop executes the next function from the queue.
+
 ### 67. What is a promise chain?
+A promise chain is a series of promises that are linked together, where the output of one promise is the input to the next. Each promise in the chain can handle success and failure cases, making it easier to manage asynchronous operations.
+
+Example:
+```js
+fetch('url')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+  
 ### 68. What are JavaScript generators?
+Generators are special functions that can pause their execution and resume later. They allow you to define an iterative algorithm using the function* syntax and yield keyword. When you call a generator function, it returns an iterator that you can use to step through the values.
+
+Example:
+```js
+function* numberGenerator() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const gen = numberGenerator();
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+```
+
 ### 69. What is the difference between throw and return in JavaScript?
+throw is used to create a custom error. When you throw an error, the normal flow of the program is stopped, and you can catch the error with a try-catch block.
+```js
+throw new Error('Something went wrong!');
+```
+return is used to exit a function and send a value back to the caller. It does not stop the whole program, just the current function.
+```js
+function add(a, b) {
+  return a + b;
+}
+```
+
 ### 70. How do you handle promise rejection?
+You can handle promise rejection using the catch() method or by providing a second argument to the then() method.
+
+Example using catch():
+```js
+fetch('url')
+  .then(response => response.json())
+  .catch(error => {
+    console.error('Error:', error);
+  });
+```
+Example using then():
+```js
+fetch('url')
+  .then(response => response.json(), error => {
+    console.error('Error:', error);
+  });
+```
+
+---
+
 ### 71. What is the use of Promise.all() in JavaScript?
+
 ### 72. What is the Promise.race() method?
 ### 73. What is the difference between setTimeout and setInterval?
 ### 74. How do you clear a timeout or an interval in JavaScript?
