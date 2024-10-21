@@ -932,15 +932,238 @@ car.drive(); // 'Toyota is driving.'
 ---
 
 ### 81. How do you create private variables in JavaScript?
+You can create private variables in JavaScript using closures or by using the # syntax in class fields. Private variables can only be accessed within the function or class where they are defined.
+
+Using closures:
+```js
+function createCounter() {
+  let count = 0; // Private variable
+
+  return {
+    increment: function() {
+      count++;
+      return count;
+    },
+    getCount: function() {
+      return count;
+    }
+  };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.getCount()); // 1
+// console.log(counter.count); // Undefined
+```
+
+Using class fields:
+```js
+class Counter {
+  #count = 0; // Private field
+
+  increment() {
+    this.#count++;
+    return this.#count;
+  }
+
+  getCount() {
+    return this.#count;
+  }
+}
+
+const counter = new Counter();
+console.log(counter.increment()); // 1
+console.log(counter.getCount()); // 1
+// console.log(counter.#count); // Syntax error
+```
+
 ### 82. What is the Object.assign() method?
+The Object.assign() method is used to copy the values of all enumerable properties from one or more source objects to a target object. It returns the target object. This method is useful for merging objects or creating copies.
+
+Example:
+```js
+const target = { a: 1 };
+const source = { b: 2, c: 3 };
+
+Object.assign(target, source);
+console.log(target); // { a: 1, b: 2, c: 3 }
+```
+
 ### 83. What is the difference between deep copy and shallow copy?
+Shallow copy creates a new object but only copies the references to the original object's properties. If the property is an object, changes to that object in the copied object will affect the original object.
+
+Deep copy creates a new object and recursively copies all properties and nested objects. Changes to the copied object do not affect the original object.
+
+Example:
+```js
+const original = { a: 1, b: { c: 2 } };
+
+// Shallow copy
+const shallowCopy = Object.assign({}, original);
+shallowCopy.b.c = 3;
+console.log(original.b.c); // 3 (changed)
+
+// Deep copy using JSON
+const deepCopy = JSON.parse(JSON.stringify(original));
+deepCopy.b.c = 4;
+console.log(original.b.c); // 2 (unchanged)
+```
+
 ### 84. How do you implement memoization in JavaScript?
+Memoization is a technique used to optimize functions by caching their results based on their input arguments. When the function is called again with the same arguments, it returns the cached result instead of recalculating.
+
+Example:
+```js
+function memoize(fn) {
+  const cache = {};
+
+  return function(arg) {
+    if (cache[arg]) {
+      return cache[arg]; // Return cached result
+    }
+    const result = fn(arg);
+    cache[arg] = result; // Store result in cache
+    return result;
+  };
+}
+
+// Example function to memoize
+function expensiveCalculation(n) {
+  // Simulating a costly computation
+  return n * 2;
+}
+
+const memoizedCalculation = memoize(expensiveCalculation);
+console.log(memoizedCalculation(5)); // 10
+console.log(memoizedCalculation(5)); // 10 (cached result)
+```
+
 ### 85. How do you debounce or throttle functions in JavaScript?
+Debouncing and throttling are techniques to control the rate at which a function is executed:
+
+Debouncing ensures that a function is only called after a certain amount of time has passed since the last time it was called. It's useful for events like resizing or typing.
+Example:
+```js
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+// Usage
+const saveInput = debounce(() => {
+  console.log('Input saved');
+}, 1000);
+```
+Throttling ensures that a function is called at most once in a specified time period. It's useful for events like scrolling.
+Example:
+```js
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+
+  return function(...args) {
+    if (!lastRan) {
+      func.apply(this, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRan >= limit) {
+          func.apply(this, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+// Usage
+const logScroll = throttle(() => {
+  console.log('Scroll event fired');
+}, 1000);
+```
+
 ### 86. What is the difference between var, let, and const in terms of scope?
+var: Declares a variable that is function-scoped or globally-scoped. It can be re-declared and updated.
+```js
+var x = 10;
+if (true) {
+  var x = 20; // Same variable
+}
+console.log(x); // 20
+```
+let: Declares a block-scoped variable that can be updated but not re-declared in the same block.
+```js
+let y = 10;
+if (true) {
+  let y = 20; // Different variable
+}
+console.log(y); // 10
+```
+const: Declares a block-scoped variable that cannot be updated or re-declared. It must be initialized when declared.
+```js
+const z = 10;
+if (true) {
+  const z = 20; // Different variable
+}
+console.log(z); // 10
+```
+
 ### 87. What is lexical scoping in JavaScript?
+Lexical scoping refers to the way variable scopes are determined in JavaScript based on the location in the source code. A function can access variables defined in its own scope, the scope of its parent, and the global scope.
+
+Example:
+```js
+function outerFunction() {
+  const outerVariable = 'I am from outer scope';
+
+  function innerFunction() {
+    console.log(outerVariable); // Accessing outerVariable
+  }
+  
+  innerFunction(); // 'I am from outer scope'
+}
+outerFunction();
+```
+
 ### 88. What is function hoisting?
+unction hoisting is a JavaScript behavior where function declarations are moved to the top of their containing scope during the compilation phase. This allows you to call a function before it is defined in the code.
+
+Example:
+```js
+console.log(myFunction()); // 'Hello!'
+
+function myFunction() {
+  return 'Hello!';
+}
+```
+
 ### 89. What is the eval() function and why is it discouraged?
+The eval() function takes a string as an argument and executes it as JavaScript code. It is discouraged because it can introduce security risks, such as executing malicious code, and it can make code harder to understand and debug.
+
+Example:
+```js
+eval('console.log("Hello from eval!")'); // Executes the code inside the string
+```
+
 ### 90. What is the difference between strict mode and non-strict mode in JavaScript?
+Strict mode is a way to opt into a restricted variant of JavaScript. It helps catch common coding errors and prevents the use of certain features that can lead to problems. Non-strict mode is the default mode in which all JavaScript code runs.
+
+Differences include:
+
+In strict mode, you cannot use undeclared variables.
+Assignments to read-only properties throw errors.
+You cannot delete variables, functions, or arguments.
+To enable strict mode, add 'use strict'; at the beginning of a script or function.
+
+```js
+'use strict';
+x = 10; // ReferenceError: x is not defined
+```
+
 ### 91. How do you enable strict mode in JavaScript?
 ### 92. What are JavaScript symbols?
 ### 93. What are regular expressions in JavaScript?
