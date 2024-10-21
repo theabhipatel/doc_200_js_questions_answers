@@ -124,17 +124,126 @@ bind(): Returns a new function with a specific this value, but doesn’t execute
 ### 20. What is a prototype in JavaScript?
 In JavaScript, every object has a prototype. The prototype is like a blueprint or template for creating objects. It allows objects to share methods and properties, so you don't have to define them for each individual object. This is the basis of inheritance in JavaScript. When you try to access a property or method on an object, JavaScript looks for it in the object itself, and if it’s not found, it looks at the object’s prototype.
 
+---
+
 ### 21. What is the difference between a function declaration and a function expression?
+A function declaration is when you define a function with the function keyword, followed by a name. This type of function can be called before it’s defined, because it’s "hoisted" to the top.
+
+Example:
+```js
+function greet() {
+  console.log('Hello');
+}
+```
+A function expression is when you define a function and assign it to a variable. It is not hoisted, so you can only call it after the definition.
+
+Example:
+```js
+const greet = function() {
+  console.log('Hello');
+};
+```
+
 ### 22. What are default parameters in JavaScript functions?
+Default parameters allow you to set a default value for a function's parameter if no argument is provided. This helps avoid errors when a parameter is missing.
+
+Example:
+```js
+function greet(name = 'Guest') {
+  console.log('Hello, ' + name);
+}
+If you don’t pass a value for name, it will use the default value 'Guest'.
+```
+
 ### 23. What is the difference between a for loop and a forEach loop?
+A for loop is a general loop that you can use for any repetitive task. You control the start, end, and how it moves through items.
+
+Example:
+```js
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+A forEach loop is used specifically with arrays. It automatically goes through each item in the array and runs a function for each one.
+
+Example:
+```js
+[1, 2, 3].forEach(function(item) {
+  console.log(item);
+});
+```
+The main difference is that forEach is only for arrays, while for is more general.
+
 ### 24. What is an IIFE (Immediately Invoked Function Expression)?
+An IIFE (Immediately Invoked Function Expression) is a function that runs as soon as it’s defined. You write it as a function expression inside parentheses, and then add () to execute it immediately.
+
+Example:
+```js
+(function() {
+  console.log('This runs right away');
+})();
+```
+
 ### 25. What is the DOM in JavaScript?
+The DOM (Document Object Model) is a way to represent the structure of a webpage. It treats the HTML of a page like a tree of objects that JavaScript can interact with. You can change, add, or remove elements on the page using the DOM.
+
 ### 26. How do you manipulate the DOM in JavaScript?
+You can manipulate the DOM by selecting elements and changing them. You can use methods like document.getElementById, document.getElementsClassName or document.querySelector to find elements, then change their content, style, or attributes.
+
+Example:
+```js
+const element = document.getElementById('myElement');
+element.textContent = 'New Content';
+```
+
 ### 27. What is the difference between document.getElementById and document.querySelector?
+**document.getElementById()** is used to select an element by its ID. It only works with IDs and returns the first matching element.
+Example:
+```js
+document.getElementById('myId');
+**document.querySelector()** is more flexible. It can select elements using CSS selectors like class names, IDs, or tags. It returns the first matching element.
+```
+
+Example:
+```js
+document.querySelector('.myClass');
+```
+
 ### 28. What are JavaScript events?
+Events are actions that happen in a web page, like a mouse click, key press, or page load. JavaScript can "listen" for these events and respond when they happen.
+
+Example: A button click is an event.
+
 ### 29. How do you add and remove event listeners in JavaScript?
+You can add an event listener using the addEventListener method, which lets you run a function when an event occurs. To remove an event listener, you use removeEventListener.
+
+Example of adding:
+```js
+document.getElementById('myButton').addEventListener('click', function() {
+  console.log('Button clicked');
+});
+```
+Example of removing:
+```js
+document.getElementById('myButton').removeEventListener('click', myFunction);
+```
 ### 30. What is event delegation?
+Event delegation is a way to manage events more efficiently. Instead of adding event listeners to many elements, you add one listener to a parent element, and it will handle events that bubble up from child elements.
+
+Example:
+```js
+document.getElementById('parent').addEventListener('click', function(event) {
+  if (event.target.matches('.child')) {
+    console.log('Child element clicked');
+  }
+});
+```
+This method reduces the number of event listeners and makes your code simpler.
+
+---
+
 ### 31. What is the difference between innerHTML and textContent?
+
 ### 32. How do you prevent the default behavior of an event?
 ### 33. How do you stop event propagation?
 ### 34. What is local storage in JavaScript?
