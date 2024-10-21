@@ -7,6 +7,27 @@
 JavaScript is a high-level, dynamic programming language used to create interactive effects in web browsers. It is a key technology of the web along with HTML and CSS. JavaScript can be used for both front-end (client-side) and back-end (server-side) development. It supports different programming styles, making it a useful tool for building web applications, mobile apps, and more. Additionally, JavaScript can change the Document Object Model (DOM) to update content and respond to user actions in real-time.
 
 ### 2. What are the different data types in JavaScript?
+In JavaScript, there are mainly two type of data types:
+
+- 1. Premitive
+- 2. Non Premtive (reference data type)
+
+#### Premitives 
+1. String: Used for text, e.g., "Hello, world!".
+2. Number: For whole numbers and decimals, e.g., 42 and 3.14.
+3. Boolean: Has two values: true and false.
+4. Null: Represents "no value" or "empty," written as null.
+5. Undefined: Indicates a variable that has been declared but not assigned a value.
+6. Symbol: A unique value used as object property keys.
+7. BigInt: For very large integers, e.g., 9007199254740991n.
+
+#### Non Premitives 
+1. Object: Stores collections of data as key-value pairs, e.g., { name: "John", age: 30 }.
+2. Array: A special type of object for lists of values, e.g., [1, 2, 3, 4].
+3. Functions
+4. Date
+
+
 ### 3. What is the difference between let, const, and var?
 ### 4. What is hoisting in JavaScript?
 ### 5. Explain the concept of closures.
