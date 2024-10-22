@@ -1298,35 +1298,216 @@ Garbage collection is the automatic process of identifying and freeing up memory
 ---
 
 ### 101. What is the purpose of the JavaScript debugger statement?
+The debugger statement is used to pause the code right where you want, like placing a bookmark. It allows you to inspect what’s happening in your code, such as checking the values of variables or seeing the flow of the program. When the debugger is triggered, you can step through your code line by line to find issues.
+
 ### 102. What is the difference between window and document in JavaScript?
+Window is the global object that represents the browser window. It contains things like browser settings, window size, and can access methods like alert() or setTimeout().
+Document is a part of the window and represents the web page itself. It allows you to interact with the HTML structure, like finding elements or changing text on the page.
+
 ### 103. What is an anonymous function in JavaScript?
+An anonymous function is a function that doesn’t have a name. It’s often used when you only need a function temporarily or want to pass it around without bothering to give it a name.
+
+Example:
+```js
+const greet = function() {
+  console.log('Hello!');
+};
+greet(); // 'Hello!'
+```
+Here, the function has no name, but it still works.
+
 ### 104. What are getter and setter methods in JavaScript?
+Getter and setter methods are special functions used to control how a property of an object is accessed or changed. A getter fetches the value, and a setter updates it. It’s like having a gatekeeper for your object’s properties.
+
+Example:
+```js
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
+  },
+  set fullName(name) {
+    [this.firstName, this.lastName] = name.split(' ');
+  }
+};
+
+console.log(person.fullName); // 'John Doe'
+person.fullName = 'Jane Smith';
+console.log(person.fullName); // 'Jane Smith'
+```
+
 ### 105. How do you create an object in JavaScript?
+There are many ways, but the simplest one is using curly braces {}. Inside the braces, you define properties for the object, like this:
+```js
+const car = {
+  make: 'Toyota',
+  model: 'Camry',
+  year: 2020
+};
+```
+This creates an object called car with properties make, model, and year.
+
 ### 106. What is the difference between const and Object.freeze()?
+const is used to declare variables that can’t be reassigned. However, the contents of an object declared with const can still be changed.
+Object.freeze() makes sure that no changes can be made to the object at all. It locks the object so no properties can be added, removed, or modified.
+Example:
+```js
+const obj = { name: 'Alice' };
+Object.freeze(obj);
+obj.name = 'Bob'; // This won’t work, the object is frozen
+```
+
 ### 107. What is the difference between a shallow copy and a deep copy in JavaScript?
+A shallow copy copies an object’s top-level properties, but if those properties are objects themselves, only the references are copied, not the actual objects.
+A deep copy creates a copy of the object and all of its nested objects, ensuring that everything is fully duplicated.
+Shallow copy:
+```js
+const original = { a: 1, b: { c: 2 } };
+const copy = { ...original };
+copy.b.c = 3; // This will also change original.b.c because it’s a shallow copy
+```
+Deep copy:
+```js
+const deepCopy = JSON.parse(JSON.stringify(original)); // Full independent copy
+```
 ### 108. How do you compare objects in JavaScript?
+To compare objects, you can’t just use === because that checks if they are the same reference (not the content). Instead, you usually compare their properties manually, or use a library to do a deep equality check.
+
+Example:
+```js
+const obj1 = { a: 1, b: 2 };
+const obj2 = { a: 1, b: 2 };
+
+console.log(JSON.stringify(obj1) === JSON.stringify(obj2)); // true (same content)
+```
+
 ### 109. What is the arguments object in JavaScript?
+The arguments object is like a built-in array for functions. It holds all the arguments passed to the function, even if you didn’t define parameters. This is useful when you don’t know in advance how many arguments will be passed. also it only works in traditonal functions.
+
+Example:
+```js
+function showArguments() {
+  console.log(arguments);
+}
+
+showArguments(1, 2, 3); // Outputs: { '0': 1, '1': 2, '2': 3 }
+```
+
 ### 110. What is a pure function in JavaScript?
+A pure function is a function that always returns the same result if given the same inputs and doesn’t change anything outside its scope (no side effects). Pure functions are predictable and easier to test.
+
+Example:
+```js
+function add(a, b) {
+  return a + b; // Always the same result for the same inputs
+}
+```
+Pure functions don't rely on external variables and don’t modify external states.
+
+---
+
 ### 111. What is memoization in JavaScript?
+Memoization is a way to speed up functions by saving (caching) the results of expensive operations. If the function is called again with the same arguments, it returns the cached result instead of recalculating it.
+
 ### 112. How do you perform deep cloning of an object in JavaScript?
+To create a full copy (deep clone) of an object, you can use JSON.parse(JSON.stringify(object)) or libraries like Lodash. This copies everything, including nested objects.
+
 ### 113. What is the difference between synchronous and asynchronous iteration in JavaScript?
+Synchronous iteration happens one step at a time, blocking the code until each step is done.
+Asynchronous iteration allows the code to continue while waiting for operations (like fetching data) to complete without blocking.
+
 ### 114. What is a symbol in JavaScript, and why would you use it?
+A symbol is a unique value that you can use as a key for object properties. It helps avoid property name conflicts because each symbol is different, even if they seem similar.
+
 ### 115. What is the hasOwnProperty() method?
+hasOwnProperty() checks if an object has a specific property, ensuring that it’s not inherited from its prototype chain.
+
 ### 116. How do you merge arrays in JavaScript?
+You can merge arrays using the spread operator [...] or Array.concat() method. Example:
+```js
+const merged = [...array1, ...array2];
+```
+
 ### 117. What is the purpose of the reduce() method in arrays?
+reduce() is used to go through all the elements of an array and combine them into a single value, like summing numbers or flattening arrays.
+
 ### 118. What is the difference between Array.from() and Array.of()?
+Array.from() creates an array from something like a string or a list-like object.
+Array.of() creates an array from the arguments you give it.
+
 ### 119. What is the difference between map() and forEach() in arrays?
+map() returns a new array after applying a function to each element.
+forEach() just runs a function for each element but doesn’t return anything.
+
 ### 120. What is the use of the every() and some() methods in arrays?
+every() checks if all elements in an array pass a test.
+some() checks if at least one element passes a test.
+
+---
+
 ### 121. How do you convert a string to an array in JavaScript?
+You can use the split() method to turn a string into an array. For example:
+```js
+let str = "hello world";
+let arr = str.split(" ");  // ["hello", "world"]
+```
+
 ### 122. How do you reverse a string in JavaScript?
+To reverse a string, you can split it into an array, reverse the array, and then join it back into a string:
+```js
+let reversed = str.split("").reverse().join("");
+```
+
 ### 123. How do you remove duplicates from an array in JavaScript?
+You can remove duplicates using a Set, which only keeps unique values:
+```js
+let uniqueArr = [...new Set(array)];
+```
+
 ### 124. How do you flatten an array in JavaScript?
+To flatten an array, you can use flat():
+```js
+let flatArr = array.flat();
+You can also specify depth like array.flat(2) to flatten more levels.
+```
+
 ### 125. What is the difference between Array.prototype.sort() and Array.prototype.reverse()?
+sort() arranges the elements in a specific order (like alphabetical or numerical).
+reverse() simply flips the order of the elements in the array.
+
 ### 126. What is the Math.random() method, and how do you generate a random number in JavaScript?
+Math.random() generates a random number between 0 and 1. To get a number in a specific range, you can multiply it:
+```js
+let randomNum = Math.random() * 10; // Random number between 0 and 10
+```
+
 ### 127. How do you round a number to a specific number of decimal places in JavaScript?
+You can use toFixed() to round a number to a certain number of decimals:
+```js
+let rounded = num.toFixed(2);  // Rounds to 2 decimal places
+```
+
 ### 128. What is the Math.floor(), Math.ceil(), and Math.round() methods?
+Math.floor() rounds down to the nearest whole number.
+Math.ceil() rounds up to the nearest whole number.
+Math.round() rounds to the nearest whole number based on standard rounding rules.
+
 ### 129. How do you format a number as a currency string in JavaScript?
+You can use toLocaleString() to format a number as currency:
+```js
+let currency = num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+```
+
 ### 130. How do you find the maximum or minimum value in an array of numbers in JavaScript?
+You can use Math.max() and Math.min() with the spread operator:
+```js
+let max = Math.max(...array);
+let min = Math.min(...array);
+```
+
+---
+
 ### 131. What are setTimeout() and setInterval() methods?
 ### 132. How do you convert a date to a string in a specific format in JavaScript?
 ### 133. How do you calculate the difference between two dates in JavaScript?
