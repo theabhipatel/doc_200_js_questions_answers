@@ -1545,50 +1545,424 @@ if (date1.getTime() > date2.getTime()) {
 ```
 
 ### 136. How do you convert a JavaScript date to UTC format?
+You can use toUTCString() or toISOString():
+```js
+let utcDate = date.toUTCString();
+```
+
 ### 137. What is the difference between encodeURI() and encodeURIComponent()?
+encodeURI() encodes a full URL, but leaves certain characters like ? or & intact.
+encodeURIComponent() encodes everything, making it safe for URL parts like query parameters.
+
 ### 138. How do you decode a URL in JavaScript?
+You can use decodeURI() or decodeURIComponent() to reverse the encoding:
+```js
+let decoded = decodeURIComponent(encodedString);
+```
+
 ### 139. What is the use of the new keyword in JavaScript?
+The new keyword is used to create an instance of an object from a constructor function or class:
+```js
+let car = new Car('Toyota');
+```
+
 ### 140. How do you define a constructor function in JavaScript?
+A constructor function is a regular function that initializes objects. Use the new keyword when calling it:
+```js
+function Person(name) {
+  this.name = name;
+}
+let person1 = new Person('Alice');
+```
+
+---
+
 ### 141. How do you inherit properties from another object in JavaScript?
+You can use Object.create() or class inheritance (extends) to inherit properties:
+```js
+let newObj = Object.create(oldObj);
+```
+
 ### 142. What is the purpose of the prototype property in JavaScript?
+The prototype property allows objects in JavaScript to share methods and properties. When you create a function, you can add methods to its prototype, and all instances of that function will have access to those methods without needing to create copies for each instance.
+
 ### 143. How do you create an instance of an object using a constructor function?
+To create an object instance using a constructor function, you use the new keyword. For example:
+```js
+function Car(make, model) {
+  this.make = make;
+  this.model = model;
+}
+let myCar = new Car('Toyota', 'Corolla');
+```
+
 ### 144. What is prototypal inheritance in JavaScript?
+rototypal inheritance is a way for one object to inherit properties and methods from another. In JavaScript, objects can inherit from other objects, not classes, through their prototype chain. For example:
+```js
+let animal = { eats: true };
+let dog = Object.create(animal);
+console.log(dog.eats); // true
+```
+
 ### 145. How do you use the Object.create() method for inheritance?
+You can use Object.create() to create a new object that inherits from an existing one. Here's an example:
+```js
+let parentObject = { hasCar: true };
+let childObject = Object.create(parentObject);
+console.log(childObject.hasCar); // true
+```
+
 ### 146. What is the purpose of the super() keyword in JavaScript?
+The super() keyword is used to call the constructor of a parent class when you're creating a subclass. It allows you to inherit properties and methods from the parent class. For example:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name); // Calls the parent class constructor
+    this.breed = breed;
+  }
+}
+```
+
 ### 147. How do you create a subclass in JavaScript using the extends keyword?
+You can use the extends keyword to create a subclass that inherits from a parent class. For example:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+}
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+}
+```
+In this example, Dog is a subclass of Animal.
+
 ### 148. What is the constructor property in JavaScript?
+The constructor property points to the function that created the instance of the object. For example:
+```js
+function Person(name) {
+  this.name = name;
+}
+let person1 = new Person('Alice');
+console.log(person1.constructor); // Person
+```
+
 ### 149. How do you add methods to a JavaScript class?
+You can add methods inside the body of a class, like this:
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+let person1 = new Person('Alice');
+person1.greet(); // "Hello, my name is Alice"
+```
+
 ### 150. What is a static method in JavaScript?
+A static method is a method defined on the class itself, not on instances of the class. You call it directly on the class, not on the object. For example:
+```js
+class MathOperations {
+  static add(a, b) {
+    return a + b;
+  }
+}
+console.log(MathOperations.add(3, 4)); // 7
+```
+
+---
+
 ### 151. How do you check if an object is an instance of a class in JavaScript?
+You can use the instanceof operator to check if an object is an instance of a class. For example:
+```js
+class Car {}
+let myCar = new Car();
+console.log(myCar instanceof Car); // true
+```
+
 ### 152. What is the difference between a class and an object in JavaScript?
+A class is a blueprint for creating objects, while an object is an instance of a class. The class defines the properties and methods, and an object uses them. For example:
+```js
+class Person {} // class
+let person1 = new Person(); // object (instance of class)
+```
+
 ### 153. How do you define a method in a JavaScript class?
+You can define a method inside a class like this:
+```js
+class Person {
+  greet() {
+    console.log('Hello!');
+  }
+}
+let person = new Person();
+person.greet(); // "Hello!"
+```
+
 ### 154. What is the use of the constructor method in a JavaScript class?
+he constructor method is a special function used to initialize an object’s properties when a new object is created. It runs automatically when an instance of the class is made.
+```js
+class Car {
+  constructor(make, model) {
+    this.make = make;
+    this.model = model;
+  }
+}
+let myCar = new Car('Toyota', 'Corolla');
+```
+
 ### 155. How do you override a method in JavaScript?
+You can override a method by defining it again in a subclass, replacing the method from the parent class. For example:
+```js
+class Animal {
+  sound() {
+    console.log('Some sound');
+  }
+}
+class Dog extends Animal {
+  sound() {
+    console.log('Bark');
+  }
+}
+let dog = new Dog();
+dog.sound(); // "Bark"
+```
+
 ### 156. How do you implement method chaining in JavaScript?
+Method chaining means calling multiple methods on an object in a single statement. You return the object (this) from each method so the next method can be called:
+```js
+class Calculator {
+  constructor(value = 0) {
+    this.value = value;
+  }
+  add(num) {
+    this.value += num;
+    return this; // return the object itself
+  }
+  subtract(num) {
+    this.value -= num;
+    return this;
+  }
+}
+let calc = new Calculator();
+calc.add(5).subtract(2); // Method chaining
+```
+
 ### 157. What is the difference between the function keyword and an arrow function in JavaScript?
+Function keyword: Creates a normal function and has its own this context.
+Arrow function: Uses the this value from its surrounding (lexical) context, which means it doesn't have its own this.
+```js
+function regularFunc() {
+  console.log(this); // `this` depends on how the function is called
+}
+const arrowFunc = () => {
+  console.log(this); // `this` refers to the surrounding context
+}
+```
+
 ### 158. How do you handle exceptions in JavaScript using try...catch?
+You use try...catch to handle errors. The code inside try runs first, and if an error occurs, it is "caught" and handled in the catch block.
+```js
+try {
+  // Code that may throw an error
+  let result = someUndefinedFunction();
+} catch (error) {
+  console.log('Error caught: ', error);
+}
+```
+
 ### 159. How do you rethrow an error in JavaScript?
+If you catch an error but want to pass it up to another part of the program, you can rethrow it inside the catch block:
+```js
+try {
+  // Code that might throw an error
+  let result = someUndefinedFunction();
+} catch (error) {
+  console.log('Handling error...');
+  throw error; // rethrowing the error
+}
+```
+
 ### 160. What is the use of the finally block in exception handling?
+The finally block runs after the try and catch blocks, no matter what happens (whether an error is thrown or not). It is often used for cleanup actions.
+```js
+try {
+  let result = someUndefinedFunction();
+} catch (error) {
+  console.log('Error caught');
+} finally {
+  console.log('This will always run');
+}
+```
+
 ### 161. What are JavaScript built-in errors?
+JavaScript has several built-in error types that represent different kinds of issues in your code:
+
+ReferenceError: Occurs when referencing a variable that doesn’t exist.
+TypeError: Happens when a value is of the wrong type.
+SyntaxError: Raised when there's a syntax mistake in your code.
+RangeError: Triggered when a value is outside the allowed range.
+EvalError: Related to issues with eval() (though not commonly used anymore).
+
 ### 162. What is a custom error in JavaScript?
+A custom error is an error that you create yourself for specific conditions in your code that you want to handle. It’s useful when the built-in error types don’t fully describe the problem.
+
 ### 163. How do you define and throw a custom error in JavaScript?
+To define a custom error, you can create a new instance of the Error class or extend it. You then use throw to raise this custom error.
+```js
+class MyCustomError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'MyCustomError';
+  }
+}
+
+throw new MyCustomError('Something went wrong!');
+```
+
 ### 164. What is the purpose of the stack trace in error handling?
+A stack trace shows the series of function calls that led to the error. It helps you understand where the error occurred in your code and how it got there, which is useful for debugging.
+
 ### 165. How do you catch multiple types of errors in JavaScript?
+You can catch multiple error types in the same catch block, and then check the type of the error using instanceof or by inspecting the name property.
+```js
+try {
+  // Some code that might throw different errors
+} catch (error) {
+  if (error instanceof TypeError) {
+    console.log('Type error caught');
+  } else if (error instanceof ReferenceError) {
+    console.log('Reference error caught');
+  } else {
+    console.log('General error caught');
+  }
+}
+```
+
 ### 166. What is the purpose of the throw statement in JavaScript?
+The throw statement allows you to create and raise an error intentionally. This can be a built-in error or a custom error. It's useful when you want to stop the program and signal that something went wrong.
+```js
+throw new Error('This is a forced error');
+```
+
 ### 167. How do you define a module in JavaScript?
+A module in JavaScript is a file that contains code you want to reuse, such as functions, variables, or classes. You define a module by exporting the parts of the code you want to share with other files.
+
 ### 168. What is the export and import syntax in JavaScript modules?
+export: You use export to make parts of your module available to other files.
+import: You use import to bring in functionality from other modules into your file.
+```js
+// Export
+export const myVariable = 42;
+export function myFunction() {}
+
+// Import
+import { myVariable, myFunction } from './myModule.js';
+```
+
 ### 169. How do you export multiple values from a JavaScript module?
+You can export multiple values by using named exports or by exporting an object.
+```js
+// Named exports
+export const name = 'John';
+export const age = 30;
+
+// Or use default export with an object
+export default { name, age };
+```
+
 ### 170. How do you import only specific parts of a module in JavaScript?
+You can selectively import specific parts of a module by using curly braces in the import statement:
+```js
+import { name, age } from './myModule.js';
+This way, you only bring in the values or functions you need.
+```
+
+---
+
 ### 171. What is the default export in JavaScript?
+A default export allows you to export a single value or object from a module. When you import it, you don’t need to use curly braces, and you can name it whatever you like. This is helpful when a module is centered around a single main functionality.
+```js
+// In myModule.js
+const myFunction = () => { /* ... */ };
+export default myFunction;
+
+// In another file
+import anyName from './myModule.js'; // You can name it anything
+```
+
 ### 172. How do you rename imports or exports in JavaScript?
+You can rename imports or exports by using the as keyword. This helps avoid naming conflicts or makes the names more meaningful.
+```js
+// Renaming export
+export const myVar = 42;
+export { myVar as renamedVar };
+
+// Renaming import
+import { renamedVar } from './myModule.js';
+```
+
 ### 173. What is the difference between named and default exports in JavaScript?
+Named Exports: You can export multiple values from a module, and they must be imported using the same names.
+Default Export: You can export one main value from a module, and it can be imported without curly braces, using any name.
+
 ### 174. How do you import a module dynamically in JavaScript?
+You can import a module dynamically using the import() function. This is useful for code splitting, where you only load a module when you need it.
+```js
+async function loadModule() {
+  const module = await import('./myModule.js');
+  module.myFunction();
+}
+```
+
 ### 175. What is tree shaking in JavaScript?
+Tree shaking is a technique used to eliminate unused code from your final bundle. It helps reduce the size of your application by only including the code that you actually use, improving performance.
+
 ### 176. What are CommonJS modules in JavaScript?
+CommonJS is a module format primarily used in Node.js. It allows you to export and import modules using module.exports and require(). This format is synchronous, making it suitable for server-side applications.
+```js
+// Exporting in CommonJS
+module.exports = myFunction;
+
+// Importing in CommonJS
+const myFunction = require('./myModule.js');
+```
+
 ### 177. How do you convert a CommonJS module to an ES module?
+To convert a CommonJS module to an ES module, you can replace module.exports with export and require() with import. Here’s a quick example:
+```js
+// CommonJS
+module.exports = myFunction;
+
+// ES Module
+export default myFunction;
+```
+
 ### 178. How do you handle circular dependencies in JavaScript modules?
+Circular dependencies occur when two modules depend on each other. To manage this, you can:
+
+Use lazy loading or dynamic imports to break the cycle.
+Refactor your code to reduce interdependencies or use a third module to consolidate shared logic.
+
 ### 179. What is a module bundler in JavaScript?
+A module bundler is a tool that takes multiple JavaScript files (modules) and combines them into a single file or a few files for better performance in web applications. This is essential for optimizing loading times and managing dependencies effectively.
+
 ### 180. What is Webpack, and how does it work?
+Webpack is a popular module bundler for JavaScript applications. It analyzes your project structure, identifies dependencies, and bundles them together. It also allows for features like code splitting, asset management, and support for various file types (CSS, images, etc.). You configure it using a webpack.config.js file where you can specify entry points, output files, loaders, and plugins.
+
+---
+
 ### 181. How do you configure Webpack for a JavaScript project?
 ### 182. What are entry and output properties in a Webpack configuration?
 ### 183. How do you define loaders in a Webpack configuration?
