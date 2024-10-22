@@ -2082,13 +2082,123 @@ module.exports = {
 ```
 With these steps, you’ll have a basic Webpack setup to bundle your React application.
 
+---
+
 ### 191. How do you configure Webpack for production and development environments?
+To configure Webpack for production and development, you can use the mode property. For development, you typically set it to 'development' for better debugging, and for production, you set it to 'production' for optimizations like minification. You can also create separate Webpack configuration files or use a single configuration with conditional logic:
+```js
+const path = require('path');
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  mode: isProduction ? 'production' : 'development',
+  entry: './src/index.js',
+  output: {
+    filename: isProduction ? 'bundle.[contenthash].js' : 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  devtool: isProduction ? 'source-map' : 'inline-source-map',
+};
+```
+
 ### 192. What are source maps in JavaScript, and how do they work?
+Source maps are files that map your minified or compiled code back to the original source code. This makes debugging easier because you can see the original code in the developer tools instead of the minified version. When you generate a source map, it links your original files with the transformed code, allowing browsers to reconstruct the original code structure.
+
 ### 193. How do you enable source maps in Webpack?
+To enable source maps in Webpack, you can set the devtool property in your configuration file. For development, you might use 'inline-source-map' to include the source map in the bundle, while for production, you can use 'source-map' to create a separate file. Here’s how to do it:
+```js
+module.exports = {
+  // Other configurations...
+  devtool: 'source-map', // or 'inline-source-map' for development
+};
+```
+
 ### 194. What is lazy loading in JavaScript?
-### 195. How do you implement lazy loading in a React application?
-### 196. What is code splitting in React?
-### 197. How do you use React.lazy() for dynamic imports?
-### 198. How do you handle errors in dynamically loaded components in React?
-### 199. What is the Suspense component in React?
-### 200. How do you use the Suspense component for code splitting in React?
+Lazy loading is a design pattern that delays the loading of resources until they are needed. In JavaScript, it means that certain parts of your application (like images or modules) are only loaded when they enter the viewport or are required for user interaction, improving performance and reducing initial load times.
+
+### 195. What is the ArrayBuffer and TypedArray in JavaScript?
+ArrayBuffer is a built-in JavaScript object that represents a generic, fixed-length raw binary data buffer. It can be used to manipulate binary data directly, which is useful for performance-sensitive applications like web graphics or handling binary protocols.
+
+TypedArray is a set of array-like objects that provide a way to read and write the binary data in an ArrayBuffer. Typed arrays include types like Int8Array, Uint8Array, Float32Array, etc., each representing a different type of data (e.g., integers or floating-point numbers) and allowing for more efficient memory usage and access.
+
+### 196. How do you implement async iterators in JavaScript?
+Async iterators allow you to iterate over asynchronous data sources using the for await...of loop. You define an async iterator by implementing a method called Symbol.asyncIterator on an object. Here’s a simple example:
+```js
+const asyncIterable = {
+  async *[Symbol.asyncIterator]() {
+    for (let i = 1; i <= 5; i++) {
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate delay
+      yield i;
+    }
+  }
+};
+
+(async () => {
+  for await (const value of asyncIterable) {
+    console.log(value); // Logs 1 to 5 with a 1 second delay
+  }
+})();
+```
+
+### 197. What is the Intl object in JavaScript?
+The Intl object in JavaScript provides internationalization support, allowing developers to format numbers, dates, and strings according to different locales. This makes it easier to create applications that can cater to users from different countries and cultures.
+
+### 198. How do you format dates and numbers using the Intl object?
+You can use the Intl.DateTimeFormat and Intl.NumberFormat constructors for formatting dates and numbers, respectively.
+
+For dates:
+```js
+const date = new Date();
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+
+console.log(formattedDate); // e.g., "October 22, 2024"
+```
+For numbers:
+```js
+const number = 123456.789;
+const formattedNumber = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+}).format(number);
+
+console.log(formattedNumber); // e.g., "$123,456.79"
+```
+
+### 199. How do you polyfill features in JavaScript?
+A polyfill is a piece of code (usually a JavaScript function) that provides the functionality that is not natively supported in a certain environment (like older browsers). To polyfill a feature, you can check if the feature exists and, if it doesn't, define it. Here’s an example of polyfilling the Array.prototype.includes method:
+```js
+if (!Array.prototype.includes) {
+  Array.prototype.includes = function(searchElement, fromIndex) {
+    if (this == null) {
+      throw new TypeError('"this" is null or not defined');
+    }
+    const O = Object(this);
+    const len = O.length >>> 0;
+    if (len === 0) return false;
+    const n = fromIndex | 0;
+    let k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+    while (k < len) {
+      if (O[k] === searchElement) {
+        return true;
+      }
+      k++;
+    }
+    return false;
+  };
+}
+```
+
+### 200. What is import() and how is it used for dynamic imports?
+The import() function is a way to load JavaScript modules dynamically. It returns a promise that resolves to the module, allowing you to import modules conditionally or on demand. This can help with code splitting and reducing the initial load time of an application. Here’s an example:
+```js
+// Dynamic import
+document.getElementById('loadButton').addEventListener('click', async () => {
+  const module = await import('./myModule.js');
+  module.doSomething(); // Call a function from the dynamically imported module
+});
+```
+This code loads myModule.js only when the button is clicked, optimizing the loading process.
