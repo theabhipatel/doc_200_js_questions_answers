@@ -1509,10 +1509,41 @@ let min = Math.min(...array);
 ---
 
 ### 131. What are setTimeout() and setInterval() methods?
+setTimeout() runs a function after waiting for a certain amount of time. For example, you can delay something by 2 seconds.
+setInterval() keeps running a function repeatedly at fixed intervals. For example, you can run a function every 3 seconds until you stop it.
+
 ### 132. How do you convert a date to a string in a specific format in JavaScript?
+ou can use toLocaleDateString() or toISOString() to format a date:
+```js
+let date = new Date();
+let formattedDate = date.toLocaleDateString("en-US");  // MM/DD/YYYY
+```
+Or use toISOString() for a standard format.
+
 ### 133. How do you calculate the difference between two dates in JavaScript?
+You can subtract two Date objects to get the difference in milliseconds, then convert that into days or hours:
+```js
+let diff = (date2 - date1) / (1000 * 60 * 60 * 24); // Difference in days
+```
+
 ### 134. What is a Date object in JavaScript, and how do you create it?
+The Date object represents a specific point in time. You can create it by:
+```js
+let today = new Date();
+```
+You can also pass a specific date like:
+```js
+let myBirthday = new Date('1990-01-01');
+```
+
 ### 135. How do you compare two dates in JavaScript?
+You can compare two dates using getTime() to get their millisecond values:
+```js
+if (date1.getTime() > date2.getTime()) {
+  console.log("date1 is after date2");
+}
+```
+
 ### 136. How do you convert a JavaScript date to UTC format?
 ### 137. What is the difference between encodeURI() and encodeURIComponent()?
 ### 138. How do you decode a URL in JavaScript?
